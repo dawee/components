@@ -16,14 +16,12 @@ export default (treant, options) => {
   const DisciplineScope = createDisciplineScope(treant, options);
   const DisciplineRightaside = createDisciplineRightaside(treant, options);
 
-  const ProductCourse = (props, children) => {
-    const product = props.product;
-
+  const ProductCourse = ({product}, children) => {
     return (
       <div className={style.wrapper}>
         <div className={style.container}>
           <DisciplineHeader
-            {...props}
+            product={product}
           />
         </div>
         <div className={style.colContainer}>
@@ -33,7 +31,7 @@ export default (treant, options) => {
         </div>
         <div className={style.container}>
           <DisciplineScope
-            {...props}
+            product={product}
             onClick={id => console.log(id)} // eslint-disable-line no-console
             selected={1}
           />
