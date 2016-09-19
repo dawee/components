@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js:
+- '6'
+cache:
+  directories:
+  - node_modules
+after_success: npm run coveralls
+env:
+- CXX=g++-4.8
+before_install:
+- npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
