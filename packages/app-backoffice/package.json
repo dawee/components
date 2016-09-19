@@ -4,8 +4,11 @@
   "description": "Brand backoffice",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm run lint",
-    "lint": "eslint src/ *.js *.json --ext .js,.json"
+    "test": "npm run lint && npm run nyc",
+    "lint": "eslint src/ *.js *.json --ext .js,.json",
+    "ava": "ava",
+    "nyc": "nyc ava --reporter=text --reporter=lcov",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,29 @@
   "homepage": "https://github.com/CoorpAcademy/app-brand#readme",
   "devDependencies": {
     "@coorpacademy/eslint-plugin-coorpacademy": "^2.0.0",
-    "eslint": "^3.5.0"
+    "ava": "^0.16.0",
+    "eslint": "^3.5.0",
+    "nyc": "^8.3.0"
+  },
+  "ava": {
+    "files": [
+      "src/**/test/**/*.js",
+      "!node_module/**/*"
+    ],
+    "require": [
+      "babel-core/register"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "src/**/test/**"
+    ],
+    "require": [
+      "babel-core/register"
+    ],
+    "all": true
   }
 }
