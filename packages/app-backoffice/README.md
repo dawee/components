@@ -1,3 +1,5 @@
+![Travis CI](https://travis-ci.com/CoorpAcademy/app-brand.svg?token=tpTZr2AKsFCqAwZ7nAEf)
+
 # APP-CATALOG
 
 ## Getting started
