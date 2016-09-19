@@ -1,0 +1,16 @@
+{
+  "name": "app-brand",
+  "version": "0.0.0",
+  "description": "Brand backoffice",
+  "main": "lib/index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoorpAcademy/app-brand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CoorpAcademy/app-brand/issues"
+  },
+  "homepage": "https://github.com/CoorpAcademy/app-brand#readme"
+}
