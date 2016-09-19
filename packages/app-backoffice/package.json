@@ -21,6 +21,7 @@
   "devDependencies": {
     "@coorpacademy/eslint-plugin-coorpacademy": "^2.0.0",
     "ava": "^0.16.0",
+    "coveralls": "^2.11.13",
     "eslint": "^3.5.0",
     "nyc": "^8.3.0"
   },
@@ -44,5 +45,8 @@
       "babel-core/register"
     ],
     "all": true
+  },
+  "dependencies": {
+    "@coorpacademy/components": "^2.2.11"
   }
 }
