@@ -1,0 +1,35 @@
+{>"layouts/layout" hideFooter="true" /}
+
+{<content}
+<div class="static">
+
+    <header id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Vous allez monter en compétences</h1>
+                    <h2>Découvrez notre expérience d’apprentissage digital entièrement centrée sur l’utilisateur</h2>
+                </div>
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+                    <a href="/catalog/trainings/" class="button btn-blue center">Je veux me former maintenant</a>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a href="/solutions" class="button btn-yellow center">Je veux former mes collaborateurs</a>
+                </div>
+            </div><!-- END row -->
+            <div class="row footer">
+                <p class="col-xs-12"><a href="/contact">Contactez-nous</a> / <a href="/CGV">CGV</a> / <a href="/mentions-legales">Mentions légales</a></p>
+                <ul class="col-xs-12">
+                    <li><a href="https://www.facebook.com/coorpacademy/"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                    <li><a href="https://twitter.com/coorpacademy"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/coorpacademy"><i class="fa fa-linkedin-square" aria-hidden="true"></i>
+</a></li>
+                    <li><a href="https://www.youtube.com/channel/UC9a5xUuAtAY-5IdIhZsy6yQ"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>
+                    <li><a href="https://plus.google.com/+Coorpacademy"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+                </ul>
+            </div><!-- END row -->
+        </div><!-- END container -->
+    </header>
+
+</div><!-- END STATIC -->
+{/content}

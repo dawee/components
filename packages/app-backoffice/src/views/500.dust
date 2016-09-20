@@ -1,0 +1,12 @@
+{>"layouts/layout"/}
+
+{<content}
+    <header id="home">
+        <div class="container">
+          <section class="error500">
+            <h1><a href="/">Error 500</a></h1>
+            </br>{err}
+          </section>
+      </div>
+  </header>
+{/content}

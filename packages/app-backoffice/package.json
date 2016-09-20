@@ -4,6 +4,7 @@
   "description": "Brand backoffice",
   "main": "lib/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "npm run lint && npm run nyc",
     "lint": "eslint src/ *.js *.json --ext .js,.json",
     "ava": "ava",
@@ -25,13 +26,21 @@
     "eslint": "^3.5.0",
     "nyc": "^8.3.0"
   },
+  "dependencies": {
+    "@coorpacademy/components": "^2.2.11",
+    "adaro": "^1.0.4",
+    "body-parser": "^1.15.2",
+    "cacheme": "0.0.5",
+    "express": "^4.14.0",
+    "lodash": "^4.15.0",
+    "morgan": "^1.7.0",
+    "winston": "^2.2.0",
+    "winston-logmatic": "^0.2.0"
+  },
   "ava": {
     "files": [
       "src/**/test/**/*.js",
       "!node_module/**/*"
-    ],
-    "require": [
-      "babel-core/register"
     ]
   },
   "nyc": {
@@ -41,12 +50,6 @@
     "exclude": [
       "src/**/test/**"
     ],
-    "require": [
-      "babel-core/register"
-    ],
     "all": true
-  },
-  "dependencies": {
-    "@coorpacademy/components": "^2.2.11"
   }
 }
