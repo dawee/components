@@ -1,5 +1,5 @@
 {
-  "name": "app-brand",
+  "name": "app-backoffice",
   "version": "0.0.0",
   "description": "Brand backoffice",
   "main": "lib/index.js",
