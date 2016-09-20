@@ -9,7 +9,7 @@ import getOr from 'lodash/fp/getOr';
 import {connectTransifex} from './modules/redux-transifex';
 import createView from './views';
 import createReducer from './reducers';
-import createMiddleware from './middlewares';
+import createMiddleware from './middleware';
 
 const {h} = treant;
 
