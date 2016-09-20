@@ -23,7 +23,9 @@
   "plugins": [
     "@coorpacademy/coorpacademy"
   ],
-  "rules": {},
+  "rules": {
+    "no-shadow": ["error", {"allow": ["history", "find"]}]
+  },
   "settings": {
     "import/ignore": ["node_modules", "\\.css$"]
   }
