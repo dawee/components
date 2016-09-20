@@ -1,0 +1,7 @@
+{
+  "extends": "@coorpacademy/components/.babelrc",
+  "only": [
+    "src",
+    "sandbox"
+  ]
+}
