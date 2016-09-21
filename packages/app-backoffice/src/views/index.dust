@@ -29,6 +29,9 @@
                 </ul>
             </div><!-- END row -->
         </div><!-- END container -->
+
+        <div id="backoffice"></div>
+        <script type="text/javascript" src="/backoffice.js"></script>
     </header>
 
 </div><!-- END STATIC -->

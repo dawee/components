@@ -1,11 +1,10 @@
 import {createStore} from 'redux';
 import {render} from '@coorpacademy/components/src/@treantjs/engine-virtual-dom';
 import * as treant from '@coorpacademy/components/src/@treantjs/core';
-import * as locales from '@coorpacademy/components/src/@coorpacademy/components/locales';
-import createTranslate from '@coorpacademy/components/src/@coorpacademy/components/util/translate';
 import {connectHistory, navigate} from '@coorpacademy/components/src/@coorpacademy/redux-tools/redux-history';
 import {Observable} from 'rxjs';
-import getOr from 'lodash/fp/getOr';
+import {createHistory} from 'history';
+import identity from 'lodash/fp/identity';
 import {connectTransifex} from './modules/redux-transifex';
 import createView from './views';
 import createReducer from './reducers';
@@ -20,18 +19,12 @@ const createRenderer = (store, history, update, createViewForRenderer, options) 
     )
   ).startWith(store.getState());
 
-  const translate$ = state$
-    .distinctUntilKeyChanged('lang')
-    .pluck('lang')
-    .map(lang => getOr(locales.en, lang, locales))
-    .map(locale => createTranslate(locale));
-
-  const View$ = translate$.map(
+  const View$ = state$.map(
     translate => createViewForRenderer(treant, {
       ...options,
       dispatch: store.dispatch,
       history,
-      translate
+      translate: identity
     })
   );
   const view$ = View$.combineLatest(state$, (View, state) => View(state, options));
@@ -52,6 +45,8 @@ const createRenderer = (store, history, update, createViewForRenderer, options) 
 };
 
 export default options => {
+  const history = createHistory();
+
   const store = createStore(
     createReducer(),
     {lang: options.lang},
