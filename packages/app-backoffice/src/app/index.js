@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
-import {render} from '@coorpacademy/components/src/@treantjs/engine-virtual-dom';
-import * as treant from '@coorpacademy/components/src/@treantjs/core';
-import {connectHistory, navigate} from '@coorpacademy/components/src/@coorpacademy/redux-tools/redux-history';
+import {render} from '@coorpacademy/treantjs-engine-virtual-dom';
+import * as treant from '@coorpacademy/treantjs-core';
+import {connectHistory, navigate} from '@coorpacademy/redux-history';
 import {Observable} from 'rxjs';
 import {createHistory} from 'history';
 import identity from 'lodash/fp/identity';

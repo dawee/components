@@ -1,59 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const defaultConfig = require('@coorpacademy/components/webpack.config.default.js');
-const styleConfig = require('@coorpacademy/components/webpack.config.style.js');
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const pkg = require('./package');
 
-const backofficeCSSLoader = styleConfig.module.loaders[0];
+const hash = '[folder]__[local]___[hash:base64:5]';
+const componentCSS = new ExtractTextPlugin('backoffice.css');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-const jsLoader = {
-  test: /\.js$/,
-  loader: 'babel',
-  query: {
-    babelrc: false,
-    extends: path.join(__dirname, './.babelrc'),
-    presets: [['es2015', {modules: false}]]
+module.exports = {
+  devtool: NODE_ENV === 'production' ? false : 'eval',
+
+  stats: {
+    children: false
   },
-  include: [
-    path.join(__dirname, 'src'),
-    path.join(__dirname, '.node_modules/@coorpacademy/components')
-  ]
-};
-
-const cssLoader = Object.assign(backofficeCSSLoader, {
-  include: [
-    path.join(__dirname, 'src')
-  ].concat(backofficeCSSLoader.include)
-});
-
-const loaders = [
-  jsLoader,
-  cssLoader
-];
-
-const plugins = [];
-
-if (NODE_ENV === 'production')
-  plugins.push(
-    new webpack.BannerPlugin([pkg.name, pkg.version].join('@'))
-  );
-else
-  plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  );
-
-if (NODE_ENV === 'production') {
-  const backofficeCSS = styleConfig.plugins[0];
-  backofficeCSS.filename = 'backoffice.css';
-  plugins.unshift(backofficeCSS);
-}
-
-const backofficeConfig = {
-  context: __dirname,
 
   entry: {
     backoffice: [
@@ -61,19 +23,66 @@ const backofficeConfig = {
       path.join(__dirname, 'src/app/bundle')
     ]
   },
-
   output: {
-    library: 'backoffice',
-    path: path.join(__dirname, 'public')
+    library: 'BackOffice',
+    filename: '[name].js',
+    path: path.join(__dirname, 'dist')
   },
 
-  plugins,
   module: {
-    loaders
-  }
-};
+    loaders: [{
+      test: /\.js$/,
+      loader: 'babel',
+      include: [
+        path.join(__dirname, 'src')
+      ]
+    }, {
+      test: /\.json$/,
+      loader: 'json'
+    }, {
+      test: /\.(ttf|otf|eot|svg|woff)$/,
+      loader: 'file-loader'
+    }, {
+      test: /\.css$/,
+      loader: NODE_ENV === 'production' ? componentCSS.extract({
+        fallbackLoader: 'style',
+        loader: `css?minimize&modules&importLoaders=1&localIdentName=${hash}!postcss`
+      }) : `style!css?minimize&modules&importLoaders=1&localIdentName=${hash}!postcss`
+    }]
+  },
 
-module.exports = merge.smart(
-  backofficeConfig,
-  defaultConfig
-);
+  plugins: (() => {
+    const plugins = [
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify(NODE_ENV)
+        }
+      })
+    ];
+
+    if (NODE_ENV === 'production')
+      plugins.push(
+        new webpack.BannerPlugin([pkg.name, pkg.version].join('@')),
+        new webpack.optimize.UglifyJsPlugin(),
+        new CompressionPlugin({
+          asset: '[path].gz',
+          algorithm: 'gzip',
+          regExp: /\.js$|\.css$/,
+          threshold: 10240,
+          minRatio: 0.8
+        }),
+        new webpack.LoaderOptionsPlugin({
+          options: {
+            postcss: {
+              plugins: [autoprefixer({
+                browsers: ['last 2 versions']
+              })]
+            },
+            context: __dirname
+          }
+        }),
+        componentCSS
+      );
+    return plugins;
+  })()
+};

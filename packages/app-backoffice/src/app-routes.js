@@ -29,6 +29,7 @@ const setBaseUrl = function(req, res, next) {
 module.exports = function(app) {
   return app
     .use(serveStatic(join(__dirname, '../public')))
+    .use(serveStatic(join(__dirname, '../dist')))
     .use(setBaseUrl)
     .use('/assets/catalog', serveStatic(
       join(__dirname, '../node_modules/@coorpacademy/app-catalog/dist'))
