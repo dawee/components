@@ -1,6 +1,6 @@
 import {h} from '@coorpacademy/treantjs-core';
 
-export default (test, {render, transform}) => {
+export default (test, {render}) => {
   test('should render vTree', t => {
     const container = document.createElement('div');
     const update = render(container);

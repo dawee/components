@@ -1,7 +1,7 @@
 import {get, getOr} from 'lodash/fp';
 import {h} from '@coorpacademy/treantjs-core';
 
-export default (test, {render, transform}) => {
+export default (test, {render}) => {
   const props = {
     style: {
       value: {
