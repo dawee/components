@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -58,14 +57,6 @@ const config = {
           minRatio: 0.8
         }),
         new webpack.LoaderOptionsPlugin({
-          options: {
-            postcss: {
-              plugins: [autoprefixer({
-                browsers: ['last 2 versions']
-              })]
-            },
-            context: __dirname
-          },
           minimize: true,
           debug: false
         }),

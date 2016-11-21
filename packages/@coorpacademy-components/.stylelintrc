@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "indentation": 2,
+    "no-eol-whitespace": true,
+    "no-extra-semicolons": true
+  }
+}
