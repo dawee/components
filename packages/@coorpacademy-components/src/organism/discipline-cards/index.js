@@ -1,5 +1,5 @@
 import set from 'lodash/fp/set';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createDisciplineCard from '../../molecule/discipline-card';
 import createThemeImage from '../../molecule/theme-image';
 import style from './style.css';
@@ -51,6 +51,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  DisciplineCards.validate = createValidate(conditions);
-  return DisciplineCards;
+  return validate(conditions, DisciplineCards);
 };

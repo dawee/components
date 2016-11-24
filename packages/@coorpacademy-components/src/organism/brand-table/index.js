@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createTable from '../../molecule/table';
 import createPagination from '../../molecule/pagination';
 import createSearch from '../../molecule/search';
@@ -88,6 +88,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  BrandTable.validate = createValidate(conditions);
-  return BrandTable;
+  return validate(conditions, BrandTable);
 };

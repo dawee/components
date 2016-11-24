@@ -1,5 +1,5 @@
 import map from 'lodash/fp/map';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createBrandCreateForm from '../../../molecule/brand-create-form';
 import createNotification from '../../../atom/notification';
 import createLayout from '../layout';
@@ -62,6 +62,5 @@ export default (treant, options = {}) => {
     );
   });
 
-  BrandCreate.validate = createValidate(conditions);
-  return BrandCreate;
+  return validate(conditions, BrandCreate);
 };

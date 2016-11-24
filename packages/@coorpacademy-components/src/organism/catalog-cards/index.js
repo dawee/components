@@ -7,7 +7,7 @@ import map from 'lodash/fp/map';
 import createCenteredText from '../../atom/centered-text';
 import createSpinner from '../../atom/spinner';
 import createCatalogCard from '../../molecule/catalog-card';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -58,6 +58,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  CatalogCards.validate = createValidate(conditions);
-  return CatalogCards;
+  return validate(conditions, CatalogCards);
 };

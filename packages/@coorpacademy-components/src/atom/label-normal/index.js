@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLabel from '../label';
 import FontNormalBehaviour from '../../behaviour/font/normal';
 import ColorTextNormalBehaviour from '../../behaviour/color/text-normal';
@@ -26,6 +26,5 @@ export default (treant, options) => {
     </FontNormal>
   );
 
-  LabelNormal.validate = createValidate(conditions);
-  return LabelNormal;
+  return validate(conditions, LabelNormal);
 };

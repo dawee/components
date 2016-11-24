@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import {spinner, doubleBounce1, doubleBounce2} from './style.css';
 
 const conditions = checker.shape({
@@ -23,6 +23,5 @@ export default (treant, options) => {
     </div>
   );
 
-  Spinner.validate = createValidate(conditions);
-  return Spinner;
+  return validate(conditions, Spinner);
 };

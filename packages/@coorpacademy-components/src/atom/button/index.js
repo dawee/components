@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLink from '../link';
 import AddClassBehaviour from '../../behaviour/effects/add-class';
 import HoverFillBehaviour from '../../behaviour/effects/hover-fill';
@@ -92,6 +92,5 @@ export default (treant, options) => {
     );
   };
 
-  Button.validate = createValidate(conditions);
-  return Button;
+  return validate(conditions, Button);
 };

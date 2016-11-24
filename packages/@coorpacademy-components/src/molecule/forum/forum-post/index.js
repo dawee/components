@@ -1,6 +1,6 @@
 import identity from 'lodash/fp/identity';
 import uniqueId from 'lodash/fp/uniqueId';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createPicture from '../../../atom/picture';
 import threadConditions from '../post-conditions';
 import createForumComment from '../forum-comment';
@@ -177,6 +177,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ForumPost.validate = createValidate(conditions);
-  return ForumPost;
+  return validate(conditions, ForumPost);
 };

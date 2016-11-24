@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createHeader from '../../../organism/header';
 import content from './content';
 
@@ -25,6 +25,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  CoorpHeader.validate = createValidate(conditions);
-  return CoorpHeader;
+  return validate(conditions, CoorpHeader);
 };

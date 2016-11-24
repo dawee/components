@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createPicture from '../../atom/picture';
 import createMenuList from '../../molecule/menu-list';
 import style from './style.css';
@@ -40,6 +40,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Header.validate = createValidate(conditions);
-  return Header;
+  return validate(conditions, Header);
 };

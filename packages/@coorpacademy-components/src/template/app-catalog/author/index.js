@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createDisciplineHeader from '../../../molecule/discipline-header';
 import createDisciplineRightaside from '../../../organism/discipline-rightaside';
 import createCatalogCards from '../../../organism/catalog-cards';
@@ -68,6 +68,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Author.validate = createValidate(conditions);
-  return Author;
+  return validate(conditions, Author);
 };

@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLink from '../../atom/link';
 import style from './style.css';
 
@@ -128,6 +128,5 @@ export default (treant, opts = {}) => {
     );
   };
 
-  Table.validate = createValidate(conditions);
-  return Table;
+  return validate(conditions, Table);
 };

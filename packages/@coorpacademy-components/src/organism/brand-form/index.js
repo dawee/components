@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createBrandFormGroup from '../../molecule/brand-form-group';
 import createButton from '../../atom/button';
 import createLink from '../../atom/link';
@@ -83,6 +83,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  BrandForm.validate = createValidate(conditions);
-  return BrandForm;
+  return validate(conditions, BrandForm);
 };

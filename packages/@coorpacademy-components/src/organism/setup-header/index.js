@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createPicture from '../../atom/picture';
 import createLink from '../../atom/link';
 import style from './style.css';
@@ -63,6 +63,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  SetupHeader.validate = createValidate(conditions);
-  return SetupHeader;
+  return validate(conditions, SetupHeader);
 };

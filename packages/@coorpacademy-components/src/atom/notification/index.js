@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -28,6 +28,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  NotificationComponent.validate = createValidate(conditions);
-  return NotificationComponent;
+  return validate(conditions, NotificationComponent);
 };

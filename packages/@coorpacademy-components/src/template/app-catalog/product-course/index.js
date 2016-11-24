@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createDisciplineHeader from '../../../molecule/discipline-header';
 import createDisciplineScope from '../../../molecule/discipline-scope';
 import createDisciplineRightaside from '../../../organism/discipline-rightaside';
@@ -104,6 +104,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ProductCourse.validate = createValidate(conditions);
-  return ProductCourse;
+  return validate(conditions, ProductCourse);
 };

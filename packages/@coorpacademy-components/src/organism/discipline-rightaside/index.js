@@ -1,7 +1,7 @@
 import get from 'lodash/fp/get';
 import map from 'lodash/fp/map';
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createCatalogCTA from '../../molecule/catalog-cta';
 import createPicture from '../../atom/picture';
 import createLink from '../../atom/link';
@@ -95,6 +95,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  DisciplineRightaside.validate = createValidate(conditions);
-  return DisciplineRightaside;
+  return validate(conditions, DisciplineRightaside);
 };

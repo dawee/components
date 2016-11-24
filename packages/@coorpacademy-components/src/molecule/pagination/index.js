@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLink from '../../atom/link';
 import style from './style.css';
 
@@ -34,6 +34,5 @@ export default (treant, options) => {
     );
   };
 
-  Pagination.validate = createValidate(conditions);
-  return Pagination;
+  return validate(conditions, Pagination);
 };

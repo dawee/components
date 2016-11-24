@@ -6,7 +6,7 @@ import toPairs from 'lodash/fp/toPairs';
 import join from 'lodash/fp/join';
 import isObject from 'lodash/fp/isObject';
 import isNil from 'lodash/fp/isNil';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -48,6 +48,5 @@ export default ({h}, options = {}) => {
     );
   };
 
-  Picture.validate = createValidate(conditions);
-  return Picture;
+  return validate(conditions, Picture);
 };

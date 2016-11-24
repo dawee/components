@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 
 const conditions = checker.shape({
   props: checker.none,
@@ -13,6 +13,5 @@ export default (treant, options) => {
     </h1>
   );
 
-  Title.validate = createValidate(conditions);
-  return Title;
+  return validate(conditions, Title);
 };

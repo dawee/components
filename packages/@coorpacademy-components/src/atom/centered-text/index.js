@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import AlignCenterBehaviour from '../../behaviour/align/centered/';
 
 const conditions = checker.shape({
@@ -19,6 +19,5 @@ export default (treant, options = {}) => {
     </AlignCenter>
   );
 
-  CenteredText.validate = createValidate(conditions);
-  return CenteredText;
+  return validate(conditions, CenteredText);
 };

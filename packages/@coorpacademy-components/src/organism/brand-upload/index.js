@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createProgressBar from '../../molecule/progress-bar';
 import createUploadBox from '../../molecule/brand-upload-box';
 import createDownloadBox from '../../molecule/brand-download-box';
@@ -79,6 +79,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  BrandUpload.validate = createValidate(conditions);
-  return BrandUpload;
+  return validate(conditions, BrandUpload);
 };

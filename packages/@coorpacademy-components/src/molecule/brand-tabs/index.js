@@ -1,6 +1,6 @@
 import map from 'lodash/fp/map';
 import createLink from '../../atom/link';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -48,6 +48,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  BrandTabs.validate = createValidate(conditions);
-  return BrandTabs;
+  return validate(conditions, BrandTabs);
 };

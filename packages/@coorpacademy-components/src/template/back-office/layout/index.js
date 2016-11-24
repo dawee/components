@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createHeader from '../../../organism/setup-header';
 import style from './style.css';
 
@@ -22,6 +22,5 @@ export default (treant, options) => {
     </div>
   );
 
-  Layout.validate = createValidate(conditions);
-  return Layout;
+  return validate(conditions, Layout);
 };

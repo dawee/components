@@ -1,5 +1,5 @@
 import isNil from 'lodash/fp/isNil';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createSsMenuList from '../ssmenu-list';
 import style from './style.css';
 
@@ -66,6 +66,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  MenuList.validate = createValidate(conditions);
-  return MenuList;
+  return validate(conditions, MenuList);
 };

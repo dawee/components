@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createCategories from '../../../molecule/categories';
 import createCursusList from '../../../molecule/cursus-list';
 import createCatalogCards from '../../../organism/catalog-cards';
@@ -42,6 +42,5 @@ export default (treant, options = {}) => {
     </div>
   );
 
-  Catalog.validate = createValidate(conditions);
-  return Catalog;
+  return validate(conditions, Catalog);
 };

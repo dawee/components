@@ -1,5 +1,5 @@
 import noop from 'lodash/fp/noop';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -48,6 +48,5 @@ export default (treant, options) => {
     );
   };
 
-  InputSwitch.validate = createValidate(conditions);
-  return InputSwitch;
+  return validate(conditions, InputSwitch);
 };

@@ -1,5 +1,5 @@
 import map from 'lodash/fp/map';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createInputText from '../../atom/input-text';
 import createInputColor from '../../atom/input-color';
 import createSelect from '../../atom/select';
@@ -49,6 +49,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  FormGroup.validate = createValidate(conditions);
-  return FormGroup;
+  return validate(conditions, FormGroup);
 };

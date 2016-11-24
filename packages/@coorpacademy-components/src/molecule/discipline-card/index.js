@@ -3,7 +3,7 @@ import getOr from 'lodash/fp/getOr';
 import partial from 'lodash/fp/partial';
 import unary from 'lodash/fp/unary';
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createModuleBubble from '../../molecule/module-bubble';
 import CenteredTextBehaviour from '../../behaviour/align/centered/';
 import style from './style.css';
@@ -102,6 +102,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  DisciplineCard.validate = createValidate(conditions);
-  return DisciplineCard;
+  return validate(conditions, DisciplineCard);
 };

@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createGridList from '../../../organism/grid-list';
 import createBrandCard from '../../../molecule/brand-card';
 import createBrandCardCreate from '../../../molecule/brand-card-create';
@@ -64,6 +64,5 @@ export default (treant, options = {}) => {
     );
   });
 
-  BrandList.validate = createValidate(conditions);
-  return BrandList;
+  return validate(conditions, BrandList);
 };

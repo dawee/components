@@ -1,6 +1,6 @@
 import get from 'lodash/fp/get';
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLink from '../../atom/link';
 import RadialFocusBehaviour from '../../behaviour/effects/radial-focus';
 import style from './style.css';
@@ -45,6 +45,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Hero.validate = createValidate(conditions);
-  return Hero;
+  return validate(conditions, Hero);
 };

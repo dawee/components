@@ -1,7 +1,7 @@
 import hyperx from 'hyperx';
 import identity from 'lodash/fp/identity';
 import getOr from 'lodash/fp/getOr';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createStarRating from '../star-rating';
 import createLink from '../../atom/link';
 import HoverFillBehaviour from '../../behaviour/effects/hover-fill';
@@ -79,6 +79,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  CatalogCard.validate = createValidate(conditions);
-  return CatalogCard;
+  return validate(conditions, CatalogCard);
 };

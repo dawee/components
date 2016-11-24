@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import pushToHistory from '../../util/navigation';
 
 const conditions = checker.shape({
@@ -28,6 +28,5 @@ export default (treant, options = {}) => {
     </a>
   );
 
-  Link.validate = createValidate(conditions);
-  return Link;
+  return validate(conditions, Link);
 };

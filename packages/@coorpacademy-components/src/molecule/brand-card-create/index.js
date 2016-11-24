@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLink from '../../atom/link';
 import style from './style.css';
 
@@ -33,6 +33,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  BrandCardCreate.validate = createValidate(conditions);
-  return BrandCardCreate;
+  return validate(conditions, BrandCardCreate);
 };

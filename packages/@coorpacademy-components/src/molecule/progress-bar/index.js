@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import AddClassBehaviour from '../../behaviour/effects/add-class';
 import style from './style.css';
 
@@ -46,6 +46,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ProgressBar.validate = createValidate(conditions);
-  return ProgressBar;
+  return validate(conditions, ProgressBar);
 };

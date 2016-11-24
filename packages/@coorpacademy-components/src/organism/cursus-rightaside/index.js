@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createCatalogCTA from '../../molecule/catalog-cta';
 import createPicture from '../../atom/picture';
 import style from './style.css';
@@ -64,6 +64,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  CursusRightaside.validate = createValidate(conditions);
-  return CursusRightaside;
+  return validate(conditions, CursusRightaside);
 };

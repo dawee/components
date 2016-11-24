@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createVideoIframe from '../video-iframe';
 import createPicture from '../../atom/picture';
 import style from './style.css';
@@ -67,6 +67,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  VideoPlayer.validate = createValidate(conditions);
-  return VideoPlayer;
+  return validate(conditions, VideoPlayer);
 };

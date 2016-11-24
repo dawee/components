@@ -1,5 +1,5 @@
 import map from 'lodash/fp/map';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLink from '../../atom/link';
 import createHoverFill from '../../behaviour/effects/hover-fill';
 import style from './style.css';
@@ -86,6 +86,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Breadcrumbs.validate = createValidate(conditions);
-  return Breadcrumbs;
+  return validate(conditions, Breadcrumbs);
 };

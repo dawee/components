@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -15,6 +15,5 @@ export default (treant, options) => {
     </span>
   );
 
-  Label.validate = createValidate(conditions);
-  return Label;
+  return validate(conditions, Label);
 };

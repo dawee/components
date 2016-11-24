@@ -1,5 +1,5 @@
 import uniqueId from 'lodash/fp/uniqueId';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createLoader from '../../atom/loader';
 import style from './style.css';
 
@@ -73,6 +73,5 @@ export default (treant, options = {}) => {
     return content;
   };
 
-  BrandUploadBox.validate = createValidate(conditions);
-  return BrandUploadBox;
+  return validate(conditions, BrandUploadBox);
 };

@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import threadConditions from '../post-conditions';
 import createForumPost from '../forum-post';
 import style from './style.css';
@@ -28,6 +28,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ForumThread.validate = createValidate(conditions);
-  return ForumThread;
+  return validate(conditions, ForumThread);
 };

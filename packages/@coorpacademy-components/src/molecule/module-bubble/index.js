@@ -4,7 +4,7 @@ import pipe from 'lodash/fp/pipe';
 import identity from 'lodash/fp/identity';
 import partial from 'lodash/fp/partial';
 import unary from 'lodash/fp/unary';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import stopPropagation from '../../util/bubbling';
 import style from './style.css';
 
@@ -75,6 +75,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ModuleBubble.validate = createValidate(conditions);
-  return ModuleBubble;
+  return validate(conditions, ModuleBubble);
 };

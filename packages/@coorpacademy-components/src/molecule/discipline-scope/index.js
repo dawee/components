@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createScopeTabs from '../scope-tabs';
 import createScopeContent from '../scope-content';
 import style from './style.css';
@@ -35,6 +35,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  DisciplineScope.validate = createValidate(conditions);
-  return DisciplineScope;
+  return validate(conditions, DisciplineScope);
 };

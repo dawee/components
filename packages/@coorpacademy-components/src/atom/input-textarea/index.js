@@ -1,5 +1,5 @@
 import noop from 'lodash/fp/noop';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -50,6 +50,5 @@ export default (treant, options) => {
     );
   };
 
-  InputTextarea.validate = createValidate(conditions);
-  return InputTextarea;
+  return validate(conditions, InputTextarea);
 };

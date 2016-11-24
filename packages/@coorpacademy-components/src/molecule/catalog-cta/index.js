@@ -1,6 +1,6 @@
 import hyperx from 'hyperx';
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createStarRating from '../../molecule/star-rating';
 import HoverFillBehaviour from '../../behaviour/effects/hover-fill';
 import style from './style.css';
@@ -56,6 +56,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  CatalogCTA.validate = createValidate(conditions);
-  return CatalogCTA;
+  return validate(conditions, CatalogCTA);
 };

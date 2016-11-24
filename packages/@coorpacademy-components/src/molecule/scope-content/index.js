@@ -1,6 +1,6 @@
 import getOr from 'lodash/fp/getOr';
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -84,6 +84,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ScopeContent.validate = createValidate(conditions);
-  return ScopeContent;
+  return validate(conditions, ScopeContent);
 };

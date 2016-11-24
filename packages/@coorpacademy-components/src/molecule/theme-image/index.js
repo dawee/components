@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import extractor from '../../util/image';
 import style from './style.css';
 
@@ -45,6 +45,5 @@ export default ({h}, {skin} = {}) => {
     );
   };
 
-  ThemeImage.validate = createValidate(conditions);
-  return ThemeImage;
+  return validate(conditions, ThemeImage);
 };

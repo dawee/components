@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createButton from '../../atom/button';
 import style from './style.css';
 
@@ -43,6 +43,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  BrandDownloadBox.validate = createValidate(conditions);
-  return BrandDownloadBox;
+  return validate(conditions, BrandDownloadBox);
 };

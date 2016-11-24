@@ -1,6 +1,6 @@
 import get from 'lodash/fp/get';
 import hyperx from 'hyperx';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createVideoIframe from '../video-iframe';
 import style from './style.css';
 
@@ -57,6 +57,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  DisciplineHeader.validate = createValidate(conditions);
-  return DisciplineHeader;
+  return validate(conditions, DisciplineHeader);
 };

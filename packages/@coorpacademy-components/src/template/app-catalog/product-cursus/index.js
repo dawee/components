@@ -1,5 +1,5 @@
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../../util/validation';
+import {checker, validate} from '../../../util/validation';
 import createCursusHeader from '../../../molecule/cursus-header';
 import createCursusRightaside from '../../../organism/cursus-rightaside';
 import createCatalogCards from '../../../organism/catalog-cards';
@@ -79,6 +79,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  ProductCursus.validate = createValidate(conditions);
-  return ProductCursus;
+  return validate(conditions, ProductCursus);
 };

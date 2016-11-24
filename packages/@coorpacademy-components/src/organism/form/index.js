@@ -1,5 +1,5 @@
 import noop from 'lodash/fp/noop';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createFormGroup from '../../molecule/form-group';
 import createButton from '../../atom/button';
 import style from './style.css';
@@ -60,6 +60,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Form.validate = createValidate(conditions);
-  return Form;
+  return validate(conditions, Form);
 };

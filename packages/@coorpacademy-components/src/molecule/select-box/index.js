@@ -1,6 +1,6 @@
 import get from 'lodash/fp/get';
 import getOr from 'lodash/fp/getOr';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -78,6 +78,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  SelectBox.validate = createValidate(conditions);
-  return SelectBox;
+  return validate(conditions, SelectBox);
 };

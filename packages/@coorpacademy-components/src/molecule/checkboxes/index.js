@@ -1,7 +1,7 @@
 import get from 'lodash/fp/get';
 import getOr from 'lodash/fp/getOr';
 import identity from 'lodash/fp/identity';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createTitledCheckbox from '../titled-checkbox';
 import style from './style.css';
 
@@ -132,6 +132,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Checkboxes.validate = createValidate(conditions);
-  return Checkboxes;
+  return validate(conditions, Checkboxes);
 };

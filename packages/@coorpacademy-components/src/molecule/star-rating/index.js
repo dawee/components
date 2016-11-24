@@ -1,6 +1,6 @@
 import fill from 'lodash/fp/fill';
 import pipe from 'lodash/fp/pipe';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createStar from '../../atom/star';
 import style from './style.css';
 
@@ -35,6 +35,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  StarRating.validate = createValidate(conditions);
-  return StarRating;
+  return validate(conditions, StarRating);
 };

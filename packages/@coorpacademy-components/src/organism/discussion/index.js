@@ -1,4 +1,4 @@
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import createForumComment from '../../molecule/forum/forum-comment';
 import createForumThread from '../../molecule/forum/forum-thread';
 import postConditions from '../../molecule/forum/post-conditions';
@@ -70,6 +70,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  Discussion.validate = createValidate(conditions);
-  return Discussion;
+  return validate(conditions, Discussion);
 };

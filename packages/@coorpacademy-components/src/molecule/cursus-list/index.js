@@ -1,6 +1,6 @@
 import identity from 'lodash/fp/identity';
 import createLink from '../../atom/link';
-import {checker, createValidate} from '../../util/validation';
+import {checker, validate} from '../../util/validation';
 import style from './style.css';
 
 const conditions = checker.shape({
@@ -52,6 +52,5 @@ export default (treant, options = {}) => {
     );
   };
 
-  CursusList.validate = createValidate(conditions);
-  return CursusList;
+  return validate(conditions, CursusList);
 };
