@@ -5,19 +5,21 @@ import isBoolean from 'lodash/fp/isBoolean';
 
 const checker = apiCheck();
 
-const createValidate = conditions => {
-  const validate = (props, children) => {
-    if (process.env.NODE_ENV === 'production') return;
+const validate = (conditions, component) => {
+  return (props, children) => {
+    if (process.env.NODE_ENV === 'production') {
+      return component(props, children);
+    }
+
     if (process.env.NODE_ENV === 'test') {
       checker.throw(conditions, {props, children});
     }
     else {
       checker.warn(conditions, {props, children});
     }
-  };
 
-  validate.conditions = conditions;
-  return validate;
+    return component(props, children);
+  };
 };
 
 checker.none = (val, _name, _location) => {
@@ -75,6 +77,6 @@ checker.color.type = 'checker.color';
 apiCheck.utils.checkerHelpers.addOptional(checker.color);
 
 export {
-  createValidate,
+  validate,
   checker
 };
