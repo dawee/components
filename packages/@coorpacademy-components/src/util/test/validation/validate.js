@@ -1,41 +1,55 @@
 import test from 'ava';
 import isFunction from 'lodash/fp/isFunction';
-import * as treant from '@coorpacademy/treantjs-core';
+// import * as treant from '@coorpacademy/treantjs-core';
 import {checker, validate} from '../../validation';
 
-const {h, resolve} = treant;
+// const {h, resolve} = treant;
 
-test('should extend children properties', t => {
-  const Title = (props, children) => <h1 style={{color: props.color}}>{children}</h1>;
-  const Color = createWrapper(() => props => ({color: props.color}))(treant);
-
-  const tree = (
-    <Color color="blue">
-      <Title>foo</Title>
-    </Color>
-  );
-
-  t.deepEqual(resolve(tree), resolve(<Title color="blue">foo</Title>));
-  t.deepEqual(resolve(tree), <h1 style={{color: 'blue'}}>foo</h1>);
-});
-
-test('should create a function wrapping a component', t => {
-  const conditions = checker.shape({value: checker.string});
+test.only('should create a function wrapping a component', t => {
+  const conditions = checker.shape({
+    props: {
+      value: checker.string
+    },
+    children: checker.none
+  });
   const Component = (props, children) => 'success';
 
   t.true(isFunction(validate(conditions, Component)));
 });
 
-test('should create a function wrapping a component', t => {
-  const conditions = checker.shape({value: checker.string});
+// test.only('validate should return component called with props/children when conditions are met', t => {
+//   const conditions = checker.shape({
+//     props: {
+//       value: checker.string
+//     },
+//     children: checker.none
+//   });
+//   const Component = (props, children) => 'success';
+//   const wrapped = validate(conditions, Component);
+//
+//   const givenProps = {value: 'foo'};
+//
+//   t.true(wrapped(givenProps, []) === 'success');
+// });
+
+test.only('wrapped component should throw when passed incompatible props', t => {
+  const conditions = checker.shape({
+    props: {
+      value: checker.string
+    },
+    children: checker.none
+  });
   const Component = (props, children) => 'success';
+  const wrapped = validate(conditions, Component);
 
-  t.true(isFunction(validate(conditions, Component)));
-});
+  t.throws(() => {
+    wrapped({}, []);
+  });
 
-test('should provide a validate function with throw', t => {
-
-  const conditions = checker.shape({});
-  const validate = createValidate(conditions, true);
-  t.true(isFunction(validate));
+  t.throws(() => {
+    wrapped({value: 100}, []);
+  });
+  // const conditions = checker.shape({});
+  // const validate = createValidate(conditions, true);
+  // t.true(isFunction(validate));
 });

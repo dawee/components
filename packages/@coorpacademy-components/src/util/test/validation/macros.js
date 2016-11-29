@@ -1,23 +1,18 @@
 import test from 'ava';
-import {checker, createValidate} from '../../validation';
+import {checker, validate} from '../../validation';
 
 const createFailure = conditions => {
-  const validate = createValidate(conditions);
+  const validator = validate(conditions);
   return (t, props, children) => {
-    t.plan(1);
-
-    try {
-      validate(props, children);
-    }
-    catch (error) {
-      t.pass();
-    }
+    t.throws(() => {
+      validator(props, children);
+    });
   };
 };
 
 const createSuccess = conditions => {
-  const validate = createValidate(conditions);
-  return (t, props, children) => validate(props, children);
+  const validator = validate(conditions, () => 'success');
+  return (t, props, children) => validator(props, children);
 };
 
 const noShape = checker.shape({});
