@@ -1,5 +1,6 @@
 node_modules
 coverage
+dist
 packages/*/node_modules
 packages/*/dist
 packages/*/lib
@@ -7,3 +8,4 @@ packages/*/es
 packages/*/coverage
 packages/*/scripts
 packages/@coorpacademy-components/demo/components.js
+packages/@coorpacademy-babel-plugin-remove-treant-validation/src/test/fixtures

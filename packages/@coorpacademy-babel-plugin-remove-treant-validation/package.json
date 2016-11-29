@@ -1,0 +1,25 @@
+{
+  "name": "@coorpacademy/babel-plugin-remove-treant-validation",
+  "version": "3.6.2",
+  "description": "Babel plugin to remove calls to the validation API in production",
+  "main": "src/index.js",
+  "files": [
+    "src/index.js"
+  ],
+  "scripts": {
+    "prepublish": "exit 0",
+    "clean": "exit 0"
+  },
+  "contributors": [
+    "Arthur Weber <arthur.weber@coorpacademy.com>",
+    "Jeroen Engels <jengels@coorpacademy.com>",
+    "Christophe Dugne-Esquevin <christophe.dugne@coorpacademy.com>"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "lodash": "^4.17.2",
+    "pify": "^2.3.0"
+  },
+  "author": "CoorpAcademy"
+}
