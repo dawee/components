@@ -1,4 +1,3 @@
-import test from 'ava';
 import {createMemoryHistory} from '@coorpacademy/history';
 import {createStore, applyMiddleware} from 'redux';
 import {
@@ -11,65 +10,60 @@ import {
   createGoForwardNavigate
 } from '..';
 
-test.beforeEach(t => {
+let store;
+
+beforeEach(() => {
   const history = createMemoryHistory({
     initialEntries: ['/foo', '/bar', '/baz'],
     initialIndex: 1
   });
 
-  const store = createStore(
+  store = createStore(
     historyReducer,
     history.location,
     applyMiddleware(
       historyMiddleware({history})
     )
   );
-
-  t.context.store = store;
 });
 
-test('should navigate on push', t => {
-  const store = t.context.store;
+it('should navigate on push', () => {
   store.dispatch(createPushNavigate('/qux?quux#quuz'));
   const state = store.getState();
 
-  t.is(state.pathname, '/qux');
-  t.is(state.search, '?quux');
-  t.is(state.hash, '#quuz');
-  t.truthy(state.key);
+  expect(state.pathname).toBe('/qux');
+  expect(state.search).toBe('?quux');
+  expect(state.hash).toBe('#quuz');
+  expect(state.key).toBeTruthy();
 });
 
-test('should navigate on replace', t => {
-  const store = t.context.store;
+it('should navigate on replace', () => {
   store.dispatch(createReplaceNavigate('/qux?quux#quuz'));
   const state = store.getState();
 
-  t.is(state.pathname, '/qux');
-  t.is(state.search, '?quux');
-  t.is(state.hash, '#quuz');
-  t.truthy(state.key);
+  expect(state.pathname).toBe('/qux');
+  expect(state.search).toBe('?quux');
+  expect(state.hash).toBe('#quuz');
+  expect(state.key).toBeTruthy();
 });
 
-test('should navigate on go', t => {
-  const store = t.context.store;
+it('should navigate on go', () => {
   store.dispatch(createGoNavigate(0));
   const state = store.getState();
 
-  t.is(state.pathname, '/bar');
+  expect(state.pathname).toBe('/bar');
 });
 
-test('should navigate on goBack', t => {
-  const store = t.context.store;
+it('should navigate on goBack', () => {
   store.dispatch(createGoBackNavigate());
   const state = store.getState();
 
-  t.is(state.pathname, '/foo');
+  expect(state.pathname).toBe('/foo');
 });
 
-test('should navigate on goForward', t => {
-  const store = t.context.store;
+it('should navigate on goForward', () => {
   store.dispatch(createGoForwardNavigate());
   const state = store.getState();
 
-  t.is(state.pathname, '/baz');
+  expect(state.pathname).toBe('/baz');
 });

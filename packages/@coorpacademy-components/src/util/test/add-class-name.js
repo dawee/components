@@ -1,19 +1,18 @@
-import test from 'ava';
 import React from 'react';
 import addClassName from '../add-class-name';
 
-test('should merge classNames', t => {
+it('should merge classNames', () => {
   const result = addClassName('bar')({className: 'foo'});
-  t.is(result.className, 'foo bar');
+  expect(result.className).toBe('foo bar');
 });
 
-test('should init classNames', t => {
+it('should init classNames', () => {
   const result = addClassName('foo')({});
-  t.is(result.className, 'foo');
+  expect(result.className).toBe('foo');
 });
 
-test('should add a className to an element', t => {
+it('should add a className to an element', () => {
   const className = 'foo';
   const element = <h1 {...addClassName('bar')({className})} />;
-  t.is(element.props.className, 'foo bar');
+  expect(element.props.className).toBe('foo bar');
 });

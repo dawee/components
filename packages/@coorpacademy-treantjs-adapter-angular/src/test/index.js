@@ -1,10 +1,9 @@
-import test from 'ava';
 import React from 'react';
 import isArray from 'lodash/fp/isArray';
 import contains from 'lodash/fp/contains';
 import createDirectives from '..';
 
-test('createDirectives should wrap factories as directive factories', t => {
+it('createDirectives should wrap factories as directive factories', () => {
   const factories = {
     StarRating: props => true,
     CatalogCard: props => true
@@ -21,7 +20,7 @@ test('createDirectives should wrap factories as directive factories', t => {
 
   createDirectives(app, Provider, factories);
 
-  t.true(isArray(app.directives));
-  t.true(contains('coorpStarRating', app.directives));
-  t.true(contains('coorpCatalogCard', app.directives));
+  expect(isArray(app.directives)).toBe(true);
+  expect(contains('coorpStarRating', app.directives)).toBe(true);
+  expect(contains('coorpCatalogCard', app.directives)).toBe(true);
 });

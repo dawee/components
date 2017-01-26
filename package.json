@@ -10,10 +10,10 @@
     "publish:beta": "lerna publish --npm-tag beta",
     "publish:canary": "lerna publish --canary --skip-git",
     "clean": "lerna run clean && lerna clean --yes",
-    "test": "jest",
+    "test": "npm run lint && jest",
     "lint": "eslint .",
     "ava": "NODE_ENV=test ava",
-    "nyc": "NODE_ENV=test nyc npm run ava",
+    "nyc": "NODE_ENV=test nyc jest",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
@@ -61,6 +61,6 @@
   },
   "jest": {
     "verbose": true,
-    "testRegex": "/packages/(.*)/src/(.*)/test/(.*)\\.js$"
+    "testRegex": "/packages(/.*)?/src(/.*)?/test(?!/fixtures)(/.*)?/*.js$"
   }
 }

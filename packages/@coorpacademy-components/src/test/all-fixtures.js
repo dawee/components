@@ -1,5 +1,4 @@
 import {relative} from 'path';
-import test from 'ava';
 import sinon from 'sinon';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -25,35 +24,33 @@ const fullOptions = {
   translate: identity
 };
 
-test.before(() => {
+beforeAll(() => {
   sinon.stub(console, 'error', warning => {
     throw new Error(warning);
   });
 });
 
-test.after(() =>
-  console.error.restore() // eslint-disable-line no-console
-);
+afterAll(() => console.error.restore());
 
 mapObject((components, componentType) => mapObject((componentPath, componentName) => {
   const Component = _require(componentPath);
   const fixtures = get([componentType, componentName], fixturesList);
 
-  test(`[${componentType}] ${componentName} › should have at least one fixture`, t => {
-    t.true(keys(fixtures).length > 0);
+  it(`[${componentType}] ${componentName} › should have at least one fixture`, () => {
+    expect(keys(fixtures).length > 0).toBe(true);
   });
 
   return mapObject((fixturePath, fixtureName) => {
-    const it = `[${componentType}] ${componentName} › ${fixtureName}`;
+    const _it = `[${componentType}] ${componentName} › ${fixtureName}`;
     const fixture = _require(fixturePath);
 
-    test(`${it} › should have props or children in every fixture`, t => {
-      t.true(undefined !== fixture.props || undefined !== fixture.children);
+    it(`${_it} › should have props or children in every fixture`, () => {
+      expect(undefined !== fixture.props || undefined !== fixture.children).toBe(true);
     });
 
     const children = fixture.children;
 
-    test(`${it} › should be instanciated as shallowTree`, t => {
+    it(`${_it} › should be instanciated as shallowTree`, () => {
       const vTree = (
         <Provider {...{skin: {}}}>
           <Component {...fixture.props}>
@@ -61,19 +58,19 @@ mapObject((components, componentType) => mapObject((componentPath, componentName
           </Component>
         </Provider>
       );
-      t.truthy(ReactDOM.renderToString(vTree));
+      expect(ReactDOM.renderToString(vTree)).toBeTruthy();
     });
 
-    test(`${it} › instanciated and resolved | no options`, t => {
+    it(`${_it} › instanciated and resolved | no options`, () => {
       const vTree = (
         <Component {...fixture.props}>
           {children}
         </Component>
       );
-      t.truthy(ReactDOM.renderToString(vTree));
+      expect(ReactDOM.renderToString(vTree)).toBeTruthy();
     });
 
-    test(`${it} › instanciated and resolved | options = {skin, translate}`, t => {
+    it(`${_it} › instanciated and resolved | options = {skin, translate}`, () => {
       const vTree = (
         <Provider {...fullOptions}>
           <Component {...fixture.props}>
@@ -81,7 +78,7 @@ mapObject((components, componentType) => mapObject((componentPath, componentName
           </Component>
         </Provider>
       );
-      t.truthy(ReactDOM.renderToString(vTree));
+      expect(ReactDOM.renderToString(vTree)).toBeTruthy();
     });
   })(fixtures);
 })(components))(componentsList);

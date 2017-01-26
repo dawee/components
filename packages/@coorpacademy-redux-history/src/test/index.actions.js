@@ -1,4 +1,3 @@
-import test from 'ava';
 import toPairs from 'lodash/fp/toPairs';
 import forEach from 'lodash/fp/forEach';
 import {
@@ -12,20 +11,20 @@ import {
   createGoForwardNavigate
 } from '..';
 
-test('createLocation should create a LOCATION action', t => {
+it('createLocation should create a LOCATION action', () => {
   const action = createLocation({
     pathname: '/'
   });
-  t.is(action.type, LOCATION);
-  t.is(action.payload.pathname, '/');
+  expect(action.type).toBe(LOCATION);
+  expect(action.payload.pathname).toBe('/');
 });
 
 forEach(([nameAction, createAction]) => {
-  test(`createNavigate should create a NAVIGATE action with ${nameAction}`, t => {
+  it(`createNavigate should create a NAVIGATE action with ${nameAction}`, () => {
     const action = createAction('/');
-    t.is(action.type, NAVIGATE);
-    t.truthy(action.payload.action);
-    t.deepEqual(action.payload.args, ['/']);
+    expect(action.type).toBe(NAVIGATE);
+    expect(action.payload.action).toBeTruthy();
+    expect(action.payload.args).toEqual(['/']);
   });
 }, toPairs({
   createPushNavigate,

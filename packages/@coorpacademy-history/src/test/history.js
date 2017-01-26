@@ -1,4 +1,3 @@
-import test from 'ava';
 import {useBasename} from '../history';
 
 [
@@ -7,15 +6,15 @@ import {useBasename} from '../history';
   [{}, '/bar', '/bar'],
   [{basename: '/foo'}, 'http://foo/bar', 'http://foo/bar'],
   [{basename: '/foo'}, '#', '#']
-].forEach(([options, input, expect]) => {
-  test(`should add createHref with ${JSON.stringify(options)} and return '${expect}'`, t => {
+].forEach(([options, input, expected]) => {
+  it(`should add createHref with ${JSON.stringify(options)} and return '${expected}'`, () => {
     const historyFactory = () => {
       return {};
     };
 
     const history = useBasename(historyFactory)(options);
 
-    t.truthy(history.createHref);
-    t.is(history.createHref(input), expect);
+    expect(history.createHref).toBeTruthy();
+    expect(history.createHref(input)).toBe(expected);
   });
 });

@@ -1,7 +1,6 @@
-import test from 'ava';
 import stopPropagation from '../bubbling';
 
-test('should call stopPropagation', t => {
+it('should call stopPropagation', () => {
   const customEvent = {stopPropagation: () => true};
   stopPropagation(customEvent);
 });

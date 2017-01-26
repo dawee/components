@@ -1,42 +1,29 @@
-import test from 'ava';
 import createTranslate from '../translate';
 
-test('should create translate function', t => {
+it('should create translate function', () => {
   const translate = createTranslate({
     'f{{oo}}': 'b{{ar}}'
   });
 
-  t.deepEqual(
-    translate('f{{oo}}', {ar: 'ar'}),
-    'bar'
-  );
+  expect(translate('f{{oo}}', {ar: 'ar'})).toEqual('bar');
 });
 
-test('should use key if any locales match', t => {
+it('should use key if any locales match', () => {
   const translate = createTranslate({});
 
-  t.deepEqual(
-    translate('f{{oo}}', {oo: 'oo'}),
-    'foo'
-  );
+  expect(translate('f{{oo}}', {oo: 'oo'})).toEqual('foo');
 });
 
-test('shouldn\'t replace if any data match', t => {
+it('shouldn\'t replace if any data match', () => {
   const translate = createTranslate({});
 
-  t.deepEqual(
-    translate('f{{oo}}'),
-    'f{{oo}}'
-  );
+  expect(translate('f{{oo}}')).toEqual('f{{oo}}');
 });
 
-test('should trim token', t => {
+it('should trim token', () => {
   const translate = createTranslate({
     'f{{oo}}': 'f{{oo}}'
   });
 
-  t.deepEqual(
-    translate('f{{ oo }}', {oo: 'oo'}),
-    'foo'
-  );
+  expect(translate('f{{ oo }}', {oo: 'oo'})).toEqual('foo');
 });

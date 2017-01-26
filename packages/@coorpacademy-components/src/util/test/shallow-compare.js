@@ -1,13 +1,12 @@
-import test from 'ava';
 import shallowCompare from '../shallow-compare';
 
-test('should shallow compare', t => {
+it('should shallow compare', () => {
   const _this = {
     props: 'foo',
     state: 'bar',
     context: 'baz'
   };
 
-  t.false(shallowCompare(_this, 'foo', 'bar', 'baz'));
-  t.true(shallowCompare(_this, 'plop', 'bar', 'baz'));
+  expect(shallowCompare(_this, 'foo', 'bar', 'baz')).toBe(false);
+  expect(shallowCompare(_this, 'plop', 'bar', 'baz')).toBe(true);
 });

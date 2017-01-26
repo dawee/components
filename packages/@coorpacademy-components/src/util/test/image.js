@@ -1,4 +1,3 @@
-import test from 'ava';
 import extractor from '../image';
 
 const skin = {
@@ -21,53 +20,53 @@ const skin = {
   }
 };
 
-test('should return null when no image and no default provided', t => {
+it('should return null when no image and no default provided', () => {
   const extract = extractor(skin);
   const style = extract('none');
-  t.is(style, null);
+  expect(style).toBe(null);
 });
 
-test('should return default when no image and default provided', t => {
+it('should return default when no image and default provided', () => {
   const extract = extractor(skin, 'foo');
   const style = extract('none');
-  t.is(style.backgroundImage, 'url(fooz)');
-  t.is(style.bar, 'barz');
+  expect(style.backgroundImage).toBe('url(fooz)');
+  expect(style.bar).toBe('barz');
 });
 
-test('should extract image with properties', t => {
+it('should extract image with properties', () => {
   const extract = extractor(skin);
   const style = extract('foo');
-  t.is(style.backgroundImage, 'url(fooz)');
-  t.is(style.bar, 'barz');
+  expect(style.backgroundImage).toBe('url(fooz)');
+  expect(style.bar).toBe('barz');
 });
 
-test('should extract custom image with default properties', t => {
+it('should extract custom image with default properties', () => {
   const extract = extractor(skin, 'foo');
   const style = extract('fooplup');
-  t.is(style.backgroundImage, 'url(fooplupz)');
-  t.is(style.bar, 'barz');
+  expect(style.backgroundImage).toBe('url(fooplupz)');
+  expect(style.bar).toBe('barz');
 });
 
-test('should extract default image and override with custom properties', t => {
+it('should extract default image and override with custom properties', () => {
   const extract = extractor(skin, 'foo');
   const style = extract('foo-2');
-  t.is(style.backgroundImage, 'url(fooz)');
-  t.is(style.bar, 'barz2');
+  expect(style.backgroundImage).toBe('url(fooz)');
+  expect(style.bar).toBe('barz2');
 });
 
-test('should extract custom image with properties', t => {
+it('should extract custom image with properties', () => {
   const extract = extractor(skin, 'foo');
   const style = extract('custom');
-  t.is(style.backgroundImage, 'url(customz)');
-  t.is(style.bar, 'custombarz');
-  t.is(style.plop, 'plopz');
+  expect(style.backgroundImage).toBe('url(customz)');
+  expect(style.bar).toBe('custombarz');
+  expect(style.plop).toBe('plopz');
 });
 
-test('should extract default image when undefined custom', t => {
+it('should extract default image when undefined custom', () => {
   const extract = extractor(skin, 'foo');
   const style = extract('void');
-  t.is(style.backgroundImage, 'url(fooz)');
-  t.is(style.bar, 'barz');
-  t.is(style.plop, undefined);
+  expect(style.backgroundImage).toBe('url(fooz)');
+  expect(style.bar).toBe('barz');
+  expect(style.plop).toBe(undefined);
 });
 

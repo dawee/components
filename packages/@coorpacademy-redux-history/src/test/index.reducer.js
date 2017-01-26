@@ -1,23 +1,20 @@
-import test from 'ava';
 import {
   createLocation,
   INITAL_STATE,
   historyReducer
 } from '..';
 
-test('should have initial state', t => {
+it('should have initial state', () => {
   const action = {type: 'foo'};
   const state = historyReducer(undefined, action);
-  const expect = INITAL_STATE;
-  t.deepEqual(state, expect);
+  expect(state).toEqual(INITAL_STATE);
 });
 
-test('should store payload of location action', t => {
+it('should store payload of location action', () => {
   const location = {
     pathname: '/foo'
   };
   const action = createLocation(location);
   const state = historyReducer(undefined, action);
-  const expect = location;
-  t.deepEqual(state, expect);
+  expect(state).toEqual(location);
 });

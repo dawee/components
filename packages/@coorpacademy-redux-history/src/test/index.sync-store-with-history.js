@@ -1,4 +1,3 @@
-import test from 'ava';
 import {createMemoryHistory} from '@coorpacademy/history';
 import {createStore, applyMiddleware} from 'redux';
 import {
@@ -8,7 +7,7 @@ import {
   syncStoreWithHistory
 } from '..';
 
-test('should navigate on push', t => {
+it('should navigate on push', () => {
   const history = createMemoryHistory({
     initialEntries: ['/foo']
   });
@@ -23,7 +22,7 @@ test('should navigate on push', t => {
   const action = syncStoreWithHistory(store, history);
   const state = store.getState();
 
-  t.is(action.type, LOCATION);
-  t.is(action.payload.pathname, '/foo');
-  t.is(action.payload, state);
+  expect(action.type).toBe(LOCATION);
+  expect(action.payload.pathname).toBe('/foo');
+  expect(action.payload).toBe(state);
 });
