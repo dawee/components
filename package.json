@@ -18,49 +18,32 @@
   },
   "devDependencies": {
     "@coorpacademy/eslint-plugin-coorpacademy": "^3.0.1",
-    "ava": "^0.17.0",
     "babel-core": "^6.18.2",
     "coveralls": "^2.11.13",
     "eslint": "^3.12.0",
     "eslint-plugin-react": "^6.8.0",
     "jest": "^18.1.0",
-    "lerna": "2.0.0-beta.28",
-    "nyc": "^10.0.0"
-  },
-  "ava": {
-    "concurrency": 8,
-    "files": [
-      "packages/**/src/**/test/**/*.js",
-      "!**/node_module/**/*"
-    ],
-    "require": [
-      "babel-core/register"
-    ],
-    "babel": "inherit"
-  },
-  "nyc": {
-    "include": [
-      "packages/**/src/**"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "exclude": [
-      "packages/**/src/**/test/**",
-      "packages/**/dist/**",
-      "packages/**/es/**",
-      "packages/**/lib/**"
-    ],
-    "require": [
-      "babel-core/register"
-    ],
-    "sourceMap": false,
-    "instrument": false,
-    "all": true
+    "lerna": "2.0.0-beta.28"
   },
   "jest": {
     "verbose": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "packages/**/src/**/*.js",
+      "!**/test/**",
+      "!**/node_modules/**"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/packages(/.*)?/src(/.*)?/test(/.*)?$",
+      "/packages(/.*)?/dist(/.*)?$",
+      "/packages(/.*)?/es(/.*)?$",
+      "/packages(/.*)?/lib(/.*)?$"
+    ],
     "testRegex": "/packages(/.*)?/src(/.*)?/test(?!/fixtures)(/.*)?/*.js$"
   }
 }
