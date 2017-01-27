@@ -31,7 +31,7 @@ beforeAll(() => {
   });
 });
 
-afterAll(() => console.error.restore());
+afterAll(() => console.error.restore()); // eslint-disable-line no-console
 
 mapObject((components, componentType) => mapObject((componentPath, componentName) => {
   const Component = _require(componentPath);
@@ -58,7 +58,7 @@ mapObject((components, componentType) => mapObject((componentPath, componentName
         </Component>
       );
 
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
