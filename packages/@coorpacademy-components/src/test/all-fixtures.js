@@ -2,6 +2,7 @@ import {relative} from 'path';
 import sinon from 'sinon';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+import renderer from 'react-test-renderer/lib/ReactTestRenderer';
 import identity from 'lodash/fp/identity';
 import map from 'lodash/fp/map';
 import pipe from 'lodash/fp/pipe';
@@ -50,15 +51,15 @@ mapObject((components, componentType) => mapObject((componentPath, componentName
 
     const children = fixture.children;
 
-    it(`${_it} › should be instanciated as shallowTree`, () => {
-      const vTree = (
-        <Provider {...{skin: {}}}>
-          <Component {...fixture.props}>
-            {children}
-          </Component>
-        </Provider>
+    it(`${_it} › should pass snapshot`, () => {
+      const component = renderer.create(
+        <Component {...fixture.props}>
+          {children}
+        </Component>
       );
-      expect(ReactDOM.renderToString(vTree)).toBeTruthy();
+
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
     });
 
     it(`${_it} › instanciated and resolved | no options`, () => {
