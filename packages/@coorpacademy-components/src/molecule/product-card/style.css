@@ -1,0 +1,23 @@
+@value colors: "../../variables/colors.css";
+@value blue from colors;
+
+.product {
+}
+
+.productHeader {
+}
+
+.productHeaderTitle {
+}
+
+.productHeaderSubtitle {
+}
+
+.productDescription {
+}
+
+.productCheckbox {
+}
+
+.productBody {
+}
