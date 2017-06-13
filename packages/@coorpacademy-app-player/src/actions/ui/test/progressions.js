@@ -10,6 +10,7 @@ import {
 } from '../../api/progressions';
 import {SLIDE_FETCH_REQUEST, SLIDE_FETCH_SUCCESS} from '../../api/slides';
 import {EXIT_NODE_FETCH_REQUEST, EXIT_NODE_FETCH_SUCCESS} from '../../api/exit-nodes';
+import {CHAPTER_FETCH_REQUEST, CHAPTER_FETCH_SUCCESS} from '../../api/chapters';
 
 test(
   'should select progression and fetch next ExitNode',
@@ -124,6 +125,12 @@ test(
         t.is(id, 'bar');
         return 'bar';
       }
+    },
+    Chapters: {
+      findById: id => {
+        t.is(id, 'baz');
+        return 'baz';
+      }
     }
   }),
   selectProgression('foo'),
@@ -150,9 +157,22 @@ test(
       },
       pipe(
         set('data.progressions.entities.foo._id', 'foo'),
-        set('data.progressions.entities.foo.state.nextContent', {type: 'success', ref: 'bar'})
+        set('data.progressions.entities.foo.state.nextContent', {type: 'success', ref: 'bar'}),
+        set('data.progressions.entities.foo.content', {type: 'chapter', ref: 'baz'})
       )({})
     ],
+    [
+      {
+        type: CHAPTER_FETCH_REQUEST,
+        meta: {id: 'baz'}
+      },
+      set('data.chapters.entities.baz', null, {})
+    ],
+    {
+      type: CHAPTER_FETCH_SUCCESS,
+      meta: {id: 'baz'},
+      payload: 'baz'
+    },
     [
       {
         type: EXIT_NODE_FETCH_REQUEST,
