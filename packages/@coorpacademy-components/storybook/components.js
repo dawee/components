@@ -422,6 +422,7 @@ import SlidesFooterFixtureSelected from '../src/molecule/slides/slides-footer/te
 import SlidesHeaderFixtureDefault from '../src/molecule/slides/slides-header/test/fixtures/default';
 import SlidesHeaderFixtureFreerun from '../src/molecule/slides/slides-header/test/fixtures/freerun';
 import SlidesHeaderFixtureNoSecondary from '../src/molecule/slides/slides-header/test/fixtures/no-secondary';
+import SlidesPlayerFixtureClue from '../src/molecule/slides/slides-player/test/fixtures/clue';
 import SlidesPlayerFixtureDefault from '../src/molecule/slides/slides-player/test/fixtures/default';
 import SlidesPlayerFixtureDropDown from '../src/molecule/slides/slides-player/test/fixtures/drop-down';
 import SlidesPlayerFixtureFreeText from '../src/molecule/slides/slides-player/test/fixtures/free-text';
@@ -1215,6 +1216,7 @@ export const fixtures = {
       NoSecondary: SlidesHeaderFixtureNoSecondary
     },
     SlidesPlayer: {
+      Clue: SlidesPlayerFixtureClue,
       Default: SlidesPlayerFixtureDefault,
       DropDown: SlidesPlayerFixtureDropDown,
       FreeText: SlidesPlayerFixtureFreeText,
